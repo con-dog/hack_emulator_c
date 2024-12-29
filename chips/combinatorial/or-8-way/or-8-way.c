@@ -1,6 +1,7 @@
 #include "or-8-way.h"
 #include "or.h"
 #include "types.h"
+#include "stdio.h"
 
 void or_8_way_chip(Or_8_Way *or_8_way)
 {
@@ -24,6 +25,7 @@ void or_8_way_chip(Or_8_Way *or_8_way)
       .input.a = or_gates_phase_b[0].output.out,
       .input.b = or_gates_phase_b[1].output.out,
   };
+  or_gate(&or_phase_c);
 
   or_8_way->output.out = or_phase_c.output.out;
 }

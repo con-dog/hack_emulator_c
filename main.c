@@ -34,10 +34,13 @@ int main(void)
   {
     or_8_way.input.in[i] = 0;
   }
-
   or_8_way.input.in[0] = 1;
 
-  // and_gate(&and);
+  or_8_way_chip(&or_8_way);
+  // Or or = {
+  //           .input.a = 0,
+  //           .input.b = 1,
+  //       }; // and_gate(&and);
   // or_gate(& or);
   // xor_gate(&xor);
   // //
@@ -47,7 +50,6 @@ int main(void)
   // not16_chip(&not16);
   // and16_chip(&and16);
   // or16_chip(&or16);
-  or_8_way_chip(&or_8_way);
 
   printf("%d", or_8_way.output.out);
   printf("\n");
