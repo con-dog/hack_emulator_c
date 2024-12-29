@@ -2,6 +2,7 @@
   "files.associations": {
     "stdlib.h": "c",
     "dmux.h": "c",
-    "and.h": "c"
+    "and.h": "c",
+    "or-8-way.h": "c"
   }
 }

@@ -5,10 +5,10 @@
 void or_8_way_chip(Or_8_Way *or_8_way)
 {
   Or or_gates_phase_a[BYTE_SIZE / 2];
-  for (int i = 0; i < BYTE_SIZE; i = i + 2)
+  for (int i = 0; i < BYTE_SIZE / 2; i++)
   {
     or_gates_phase_a[i].input.a = or_8_way->input.in[i];
-    or_gates_phase_a[i].input.b = or_8_way->input.in[i + 1];
+    or_gates_phase_a[i].input.b = or_8_way->input.in[i + BYTE_SIZE / 2];
     or_gate(&or_gates_phase_a[i]);
   }
 
@@ -16,7 +16,7 @@ void or_8_way_chip(Or_8_Way *or_8_way)
   for (int i = 0; i < BYTE_SIZE / 4; i++)
   {
     or_gates_phase_b[i].input.a = or_gates_phase_a[i].output.out;
-    or_gates_phase_b[i].input.b = or_gates_phase_a[i + 2].output.out;
+    or_gates_phase_b[i].input.b = or_gates_phase_a[i + BYTE_SIZE / 4].output.out;
     or_gate(&or_gates_phase_b[i]);
   }
 
