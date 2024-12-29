@@ -6,6 +6,7 @@
 #include "gates/xor/xor.h"
 #include "chips/combinatorial/mux/mux.h"
 #include "chips/combinatorial/dmux/dmux.h"
+#include "chips/combinatorial/not16/not16.h"
 
 int main(void)
 {
@@ -35,12 +36,25 @@ int main(void)
       .input.sel = true,
   };
 
+  Not16 not16;
+
+  for (int i = 0; i < 16; i++)
+  {
+    not16.input.in[i] = 1;
+  }
+
   and_gate(&and);
   or_gate(& or);
   xor_gate(&xor);
   //
   mux_chip(&mux);
   dmux_chip(&dmux);
+  //
+  not16_chip(&not16);
 
-  printf("%d\n%d\n", dmux.output.a, dmux.output.b);
+  for (int i = 0; i < 16; i++)
+  {
+    printf("%d", not16.output.out[i]);
+  }
+  printf("\n");
 }
