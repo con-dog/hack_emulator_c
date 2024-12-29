@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "name": "Mac",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/gates/nand",
+        "${workspaceFolder}/gates/not",
+        "${workspaceFolder}/gates/and",
+        "${workspaceFolder}/gates/or",
+        "${workspaceFolder}/gates/xor",
+        "${workspaceFolder}/chips/combinatorial/mux",
+        "${workspaceFolder}/chips/combinatorial/dmux"
+      ],
+      "defines": [],
+      "macFrameworkPath": [],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "macos-gcc-x64"
+    }
+  ],
+  "version": 4
+}

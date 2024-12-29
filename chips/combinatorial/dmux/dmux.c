@@ -1,6 +1,6 @@
 #include "dmux.h"
-#include "./gates/and/and.h"
-#include "./gates/not/not.h"
+#include "and.h"
+#include "not.h"
 
 void dmux_chip(Dmux *dmux)
 {
