@@ -3,18 +3,18 @@
 
 #include <stdbool.h>
 
-typedef struct
+typedef struct And_Input
 {
   bool a;
   bool b;
 } And_Input;
 
-typedef struct
+typedef struct And_Output
 {
   bool out;
 } And_Output;
 
-typedef struct
+typedef struct And
 {
   And_Input input;
   And_Output output;

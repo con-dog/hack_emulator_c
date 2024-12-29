@@ -4,18 +4,18 @@
 #include <stdbool.h>
 #include "types.h"
 
-typedef struct
+typedef struct Or16_Input
 {
   bool a[WORD_SIZE];
   bool b[WORD_SIZE];
 } Or16_Input;
 
-typedef struct
+typedef struct Or16_Output
 {
   bool out[WORD_SIZE];
 } Or16_Output;
 
-typedef struct
+typedef struct Or16
 {
   Or16_Input input;
   Or16_Output output;

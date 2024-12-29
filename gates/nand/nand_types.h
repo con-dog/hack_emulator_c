@@ -3,18 +3,18 @@
 
 #include <stdbool.h>
 
-typedef struct
+typedef struct Nand_Input
 {
   bool a;
   bool b;
 } Nand_Input;
 
-typedef struct
+typedef struct Nand_Output
 {
   bool out;
 } Nand_Output;
 
-typedef struct
+typedef struct Nand
 {
   Nand_Input input;
   Nand_Output output;

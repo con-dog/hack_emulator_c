@@ -3,17 +3,17 @@
 
 #include <stdbool.h>
 
-typedef struct
+typedef struct Not_Input
 {
   bool in;
 } Not_Input;
 
-typedef struct
+typedef struct Not_Output
 {
   bool out;
 } Not_Output;
 
-typedef struct
+typedef struct Not
 {
   Not_Input input;
   Not_Output output;

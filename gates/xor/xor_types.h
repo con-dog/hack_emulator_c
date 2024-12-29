@@ -3,18 +3,18 @@
 
 #include <stdbool.h>
 
-typedef struct
+typedef struct Xor_Input
 {
   bool a;
   bool b;
 } Xor_Input;
 
-typedef struct
+typedef struct Xor_Output
 {
   bool out;
 } Xor_Output;
 
-typedef struct
+typedef struct Xor
 {
   Xor_Input input;
   Xor_Output output;

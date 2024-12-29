@@ -3,18 +3,18 @@
 
 #include <stdbool.h>
 
-typedef struct
+typedef struct Or_Input
 {
   bool a;
   bool b;
 } Or_Input;
 
-typedef struct
+typedef struct Or_Output
 {
   bool out;
 } Or_Output;
 
-typedef struct
+typedef struct Or
 {
   Or_Input input;
   Or_Output output;
