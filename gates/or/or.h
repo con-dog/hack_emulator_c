@@ -1,7 +1,7 @@
 #ifndef OR_H
 #define OR_H
 
-#include "or_types.h"
+#include "or-types.h"
 
 void or_gate(Or * or);
 

@@ -1,7 +1,7 @@
 #ifndef DMUX_H
 #define DMUX_H
 
-#include "dmux_types.h"
+#include "dmux-types.h"
 
 void dmux_chip(Dmux *dmux);
 

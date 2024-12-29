@@ -1,7 +1,7 @@
 #ifndef AND_H
 #define AND_H
 
-#include "and_types.h"
+#include "and-types.h"
 
 void and_gate(And *and);
 

@@ -1,7 +1,7 @@
 #ifndef NOT16_H
 #define NOT16_H
 
-#include "not16_types.h"
+#include "not16-types.h"
 
 void not16_chip(Not16 *not16);
 
