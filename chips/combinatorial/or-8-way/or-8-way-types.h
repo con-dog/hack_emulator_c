@@ -1,24 +1,23 @@
-#ifndef OR16_TYPES_H
-#define OR16_TYPES_H
+#ifndef OR_8_WAY_TYPES_H
+#define OR_8_WAY_TYPES_H
 
 #include <stdbool.h>
 #include "types.h"
 
-typedef struct Or16_Input
+typedef struct Or_8_Way_Input
 {
-  bool a[WORD_SIZE];
-  bool b[WORD_SIZE];
-} Or16_Input;
+  bool in[BYTE_SIZE];
+} Or_8_Way_Input;
 
-typedef struct Or16_Output
+typedef struct Or_8_Way_Output
 {
-  bool out[WORD_SIZE];
-} Or16_Output;
+  bool out;
+} Or_8_Way_Output;
 
-typedef struct Or16
+typedef struct Or_8_Way
 {
-  Or16_Input input;
-  Or16_Output output;
-} Or16;
+  Or_8_Way_Input input;
+  Or_8_Way_Output output;
+} Or_8_Way;
 
 #endif

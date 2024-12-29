@@ -1,8 +1,8 @@
-#ifndef OR16_H
-#define OR16_H
+#ifndef OR_8_WAY_H
+#define OR_8_WAY_H
 
-#include "or16-types.h"
+#include "or-8-way-types.h"
 
-void or16_chip(Or16 *or16);
+void or_8_way_chip(Or_8_Way *or_8_way);
 
 #endif
