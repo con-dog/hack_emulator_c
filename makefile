@@ -24,6 +24,7 @@ INCLUDES = -I$(GATES_DIR)/nand \
 					-I$(COMB_DIR)/mux16 \
 					-I$(COMB_DIR)/or-8-way \
 					-I$(COMB_DIR)/mux16-4-way \
+					-I$(COMB_DIR)/mux16-8-way \
 					\
 					-I$(TYPES_DIR) \
 
