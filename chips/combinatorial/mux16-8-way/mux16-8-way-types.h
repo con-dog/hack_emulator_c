@@ -14,7 +14,6 @@ typedef struct Mux16_8_Way_Input
   bool f[WORD_SIZE];
   bool g[WORD_SIZE];
   bool h[WORD_SIZE];
-
   bool sel[3];
 } Mux16_8_Way_Input;
 
