@@ -10,47 +10,36 @@
 #include "chips/combinatorial/and16/and16.h"
 #include "chips/combinatorial/or16/or16.h"
 #include "chips/combinatorial/or-8-way/or-8-way.h"
+#include "chips/combinatorial/mux16-4-way/mux16-4-way.h"
 #include "types/types.h"
 
 int main(void)
 {
-
-  Or_8_Way or_8_way;
-
-  // for (int i = 0; i < WORD_SIZE; i++)
-  // {
-  //   not16.input.in[i] = 1;
-  // }
-
-  // for (int i = 0; i < WORD_SIZE; i++)
-  // {
-  //   and16.input.a[i] = 1;
-  //   and16.input.b[i] = 1;
-  //   or16.input.a[i] = 0;
-  //   or16.input.b[i] = 0;
-  // }
-
-  for (int i = 0; i < BYTE_SIZE; i++)
+  Mux16_4_Way mux16_4_way;
+  for (int i = 0; i < WORD_SIZE / 2; i++)
   {
-    or_8_way.input.in[i] = 0;
+    mux16_4_way.input.a[i] = 0;
+    mux16_4_way.input.b[i] = 0;
+    mux16_4_way.input.c[i] = 1;
+    mux16_4_way.input.d[i] = 1;
   }
-  or_8_way.input.in[0] = 1;
 
-  or_8_way_chip(&or_8_way);
-  // Or or = {
-  //           .input.a = 0,
-  //           .input.b = 1,
-  //       }; // and_gate(&and);
-  // or_gate(& or);
-  // xor_gate(&xor);
-  // //
-  // mux_chip(&mux);
-  // dmux_chip(&dmux);
-  // //
-  // not16_chip(&not16);
-  // and16_chip(&and16);
-  // or16_chip(&or16);
+  for (int i = WORD_SIZE / 2; i < WORD_SIZE; i++)
+  {
+    mux16_4_way.input.a[i] = 0;
+    mux16_4_way.input.b[i] = 1;
+    mux16_4_way.input.c[i] = 0;
+    mux16_4_way.input.d[i] = 1;
+  }
 
-  printf("%d", or_8_way.output.out);
+  mux16_4_way.input.sel[0] = 1;
+  mux16_4_way.input.sel[1] = 0;
+
+  mux16_4_way_chip(&mux16_4_way);
+
+  for (int i = 0; i < WORD_SIZE; i++)
+  {
+    printf("%d", mux16_4_way.output.out[i]);
+  }
   printf("\n");
 }
