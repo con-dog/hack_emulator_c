@@ -1,10 +1,10 @@
 #include <stdio.h>
-#include "primitive_gates/not/not.h"
-#include "primitive_gates/nand/nand.h"
-#include "primitive_gates/and/and.h"
-#include "primitive_gates/or/or.h"
-#include "primitive_gates/xor/xor.h"
-#include "primitive_gates/mux/mux.h"
+#include "gates/not/not.h"
+#include "gates/nand/nand.h"
+#include "gates/and/and.h"
+#include "gates/or/or.h"
+#include "gates/xor/xor.h"
+#include "chips/combinatorial/mux/mux.h"
 
 int main(void)
 {
@@ -32,7 +32,7 @@ int main(void)
   and_gate(&and);
   or_gate(& or);
   xor_gate(&xor);
-  mux_gate(&mux);
+  mux_chip(&mux);
 
   printf("%d\n%d\n%d\n%d\n", and.output.out, or.output.out, xor.output.out, mux.output.out);
 }

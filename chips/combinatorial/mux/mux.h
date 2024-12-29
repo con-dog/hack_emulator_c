@@ -3,6 +3,6 @@
 
 #include "mux_types.h"
 
-void mux_gate(Mux *mux);
+void mux_chip(Mux *mux);
 
 #endif

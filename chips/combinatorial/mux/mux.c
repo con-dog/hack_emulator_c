@@ -3,7 +3,7 @@
 #include "not.h"
 #include "or.h"
 
-void mux_gate(Mux *mux)
+void mux_chip(Mux *mux)
 {
   Not not = {
       .input.in = mux->input.sel};

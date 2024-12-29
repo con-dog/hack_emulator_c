@@ -1,14 +1,54 @@
-CC=gcc
-CFLAGS=-Wall -Wextra -Iprimitive_gates/nand -Iprimitive_gates/not -Iprimitive_gates/and -Iprimitive_gates/or -Iprimitive_gates/xor -Iprimitive_gates/mux
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall -Wextra
 
-SRC=main.c primitive_gates/nand/nand.c primitive_gates/not/not.c primitive_gates/and/and.c primitive_gates/or/or.c primitive_gates/xor/xor.c primitive_gates/mux/mux.c
-OBJ=$(SRC:.c=.o)
+# Directory structure
+GATES_DIR = gates
+CHIPS_DIR = chips
+COMB_DIR = $(CHIPS_DIR)/combinatorial
+SEQ_DIR = $(CHIPS_DIR)/sequential
 
-main: $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+# Include paths for header files
+INCLUDES = -I$(GATES_DIR)/nand \
+          -I$(GATES_DIR)/not \
+          -I$(GATES_DIR)/and \
+          -I$(GATES_DIR)/or \
+          -I$(GATES_DIR)/xor \
+          -I$(COMB_DIR)/mux \
+          -I$(COMB_DIR)/dmux
 
+# Source files
+GATES_SRC = $(wildcard $(GATES_DIR)/*//*.c)
+COMB_SRC = $(wildcard $(COMB_DIR)/*//*.c)
+SEQ_SRC = $(wildcard $(SEQ_DIR)/*//*.c)
+MAIN_SRC = main.c
+
+# All source files
+SRC = $(MAIN_SRC) $(GATES_SRC) $(COMB_SRC) $(SEQ_SRC)
+
+# Object files
+OBJ = $(SRC:.c=.o)
+
+# Main target
+TARGET = main
+
+# Default target
+all: $(TARGET)
+
+# Linking
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $@
+
+# Compilation
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+# Clean
 clean:
-	rm -f main $(OBJ)
+	rm -f $(TARGET) $(OBJ)
+
+# Clean and rebuild
+rebuild: clean all
+
+# Phony targets
+.PHONY: all clean rebuild

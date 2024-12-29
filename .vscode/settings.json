@@ -1,5 +1,7 @@
 {
   "files.associations": {
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "dmux.h": "c",
+    "and.h": "c"
   }
 }
