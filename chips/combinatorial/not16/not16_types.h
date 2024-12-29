@@ -2,15 +2,16 @@
 #define NOT16_TYPES_H
 
 #include <stdbool.h>
+#include "types.h"
 
 typedef struct
 {
-  bool in[16];
+  bool in[WORD_SIZE];
 } Not16_Input;
 
 typedef struct
 {
-  bool out[16];
+  bool out[WORD_SIZE];
 } Not16_Output;
 
 typedef struct
