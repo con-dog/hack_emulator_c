@@ -8,6 +8,7 @@
 #include "chips/combinatorial/dmux/dmux.h"
 #include "chips/combinatorial/not16/not16.h"
 #include "chips/combinatorial/and16/and16.h"
+#include "chips/combinatorial/or16/or16.h"
 #include "types/types.h"
 
 int main(void)
@@ -40,6 +41,7 @@ int main(void)
 
   Not16 not16;
   And16 and16;
+  Or16 or16;
 
   for (int i = 0; i < WORD_SIZE; i++)
   {
@@ -50,6 +52,8 @@ int main(void)
   {
     and16.input.a[i] = 1;
     and16.input.b[i] = 1;
+    or16.input.a[i] = 0;
+    or16.input.b[i] = 0;
   }
 
   and_gate(&and);
@@ -61,10 +65,11 @@ int main(void)
   //
   not16_chip(&not16);
   and16_chip(&and16);
+  or16_chip(&or16);
 
   for (int i = 0; i < WORD_SIZE; i++)
   {
-    printf("%d", and16.output.out[i]);
+    printf("%d", or16.output.out[i]);
   }
   printf("\n");
 }
