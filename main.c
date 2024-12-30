@@ -6,29 +6,26 @@
 
 int main(void)
 {
-
-  // Inc16 inc16_unit;
-
-  // for (int i = 0; i < WORD_SIZE; i++)
-  // {
-  //   inc16_unit.input.in[i] = 0;
-  // }
-  // inc16_chip(&inc16_unit);
-
-  // for (int i = WORD_SIZE - 1; i >= 0; i--)
-  // {
-  //   printf("%d", inc16_unit.output.out[i]);
-  // }
-  Add16 add16_unit = {
-      .input.a = {[0 ... WORD_SIZE - 1] = 1},
-      .input.b = {[0 ... WORD_SIZE - 1] = 1},
+  Inc16 inc16_unit = {
+      .input.in = {
+          [1] = 1, [2] = 2},
   };
-  add16_chip(&add16_unit);
+  inc16_chip(&inc16_unit);
 
   for (int i = WORD_SIZE - 1; i >= 0; i--)
   {
-    printf("%d", add16_unit.output.out[i]);
+    printf("%d", inc16_unit.output.out[i]);
   }
+  // Add16 add16_unit = {
+  //     .input.a = {[0 ... WORD_SIZE - 1] = 1},
+  //     .input.b = {[0 ... WORD_SIZE - 1] = 1},
+  // };
+  // add16_chip(&add16_unit);
+
+  // for (int i = WORD_SIZE - 1; i >= 0; i--)
+  // {
+  //   printf("%d", add16_unit.output.out[i]);
+  // }
 
   printf("\n");
 }
