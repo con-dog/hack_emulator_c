@@ -23,6 +23,44 @@ For comparison, most emulator projects start right at the CPU level and don't se
 - They look at CPU truth table / Instruction set and implement that logic directly
 - More straight forward, but you skip all the gates/chips fun.
 
+## Contributing [OPEN]
+A really simple way to start contributing would be to write some truth table tests for the nand_gate, then the other base gates too.
+
+Anyone code do this, its pretty easy stuff :)
+
+EG: For the NAND gate, it would be as simple as the following (pseudocode):
+```c
+// Truth Table for NAND Gate:
+/* 
+ * | a | b | out |
+ * ---------------
+ * | 0 | 0 |  1  |
+ * | 0 | 1 |  1  |
+ * | 1 | 0 |  1  |
+ * | 1 | 1 |  0  |
+ */
+
+// Define gate
+Nand nand_instance;
+
+// Set inputs to either 0 or 1
+nand_instance.input.a = 0;
+nand_instance.input.b = 0;
+
+// Process logic
+nand_gate(&nand_instance);
+
+// Check output is correct
+if (nand_instance.output.out == 1)
+{
+  // PASSED
+}
+else
+{
+  // FAILED
+}
+```
+
 ## Example code, what to expect
 
 Confused? Some code example may help.
