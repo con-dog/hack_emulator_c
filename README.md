@@ -11,10 +11,10 @@ All this is done via software defined hardware emulation.
 ## Difference to other Emulator projects
 - No external dependencies (so far)
 - Start with a single software defined NAND gate in C
-  - EVERYTHING is built from this base chip
+  - EVERYTHING is built from this base chip - everything
 - Don't use certain programming utilities: boolean logic operators, bitwise logic operators etc 
   - Instead we leverage the gates/chips to implement such logic
-- I build more and more base chips from the NAND gate
+- Build more and more base chips from the NAND gate
   - Simple gates: OR, AND, NOT, XOR
   - Simple chips: DMux, Mux
   - 16 bit variants
@@ -70,8 +70,16 @@ Confused? Some code example may help.
 #### NAND Gate
 Heres example code for my NAND gate:
 
-
 ```c
+/*
+ * | a | b | out |
+ * ---------------
+ * | 0 | 0 |  1  |
+ * | 0 | 1 |  1  |
+ * | 1 | 0 |  1  |
+ * | 1 | 1 |  0  |
+ */
+
 typedef struct Nand_Input
 {
   bool a;
@@ -89,9 +97,9 @@ typedef struct Nand
   Nand_Output output;
 } Nand;
 
-void nand_gate(Nand *nand)
+void nand_gate(Nand *nand_unit)
 {
-  nand->output.out = !(nand->input.a & nand->input.b);
+  nand_unit->output.out = !(nand_unit->input.a & nand_unit->input.b);
 }
 ```
 
@@ -115,14 +123,14 @@ typedef struct Not
   Not_Output output;
 } Not;
 
-void not_gate(Not * not )
+void not_gate(Not *not_unit)
 {
-  Nand nand = {
-      .input.a = not ->input.in,
-      .input.b = not ->input.in,
+  Nand nand_unit = {
+      .input.a = not_unit->input.in,
+      .input.b = not_unit->input.in,
   };
-  nand_gate(&nand);
-  not ->output.out = nand.output.out;
+  nand_gate(&nand_unit);
+  not_unit->output.out = nand_unit.output.out;
 }
 ```
     
@@ -144,13 +152,13 @@ Heres a more complex chip, a 8-way DMux
  *                            [0,  0,  0,  0,  0,  0,  0, in] if sel = 111
  */
 
-typedef struct Dmux_8_Way_Input
+typedef struct Dmux_8way_Input
 {
   bool in;
   bool sel[3];
-} Dmux_8_Way_Input;
+} Dmux_8way_Input;
 
-typedef struct Dmux_8_Way_Output
+typedef struct Dmux_8way_Output
 {
   bool a;
   bool b;
@@ -160,43 +168,40 @@ typedef struct Dmux_8_Way_Output
   bool f;
   bool g;
   bool h;
-} Dmux_8_Way_Output;
+} Dmux_8way_Output;
 
-typedef struct Dmux_8_Way
+typedef struct Dmux_8way
 {
-  Dmux_8_Way_Input input;
-  Dmux_8_Way_Output output;
-} Dmux_8_Way;
+  Dmux_8way_Input input;
+  Dmux_8way_Output output;
+} Dmux_8way;
 
-void dmux_8_way_chip(Dmux_8_Way *dmux_8_way)
+void dmux_8way_chip(Dmux_8way *dmux_8way_unit)
 {
-  Dmux dmux;
-  Dmux_4_Way dmux_4_way_a, dmux_4_way_b;
+  Dmux dmux_unit;
+  Dmux_4way dmux_4way_unit_1, dmux_4way_unit_2;
 
   // dmux
-  dmux.input.in = dmux_8_way->input.in;
-  dmux.input.sel = dmux_8_way->input.sel[2];
-  dmux_chip(&dmux);
+  dmux_unit.input.in = dmux_8way_unit->input.in;
+  dmux_unit.input.sel = dmux_8way_unit->input.sel[2];
+  dmux_chip(&dmux_unit);
 
-  // dmux 4way a
-  dmux_4_way_a.input.in = dmux.output.a;
-  memcpy(dmux_4_way_a.input.sel, dmux_8_way->input.sel, sizeof(dmux_4_way_a.input.sel));
-  dmux_4_way_chip(&dmux_4_way_a);
+  dmux_4way_unit_1.input.in = dmux_unit.output.a;
+  memcpy(dmux_4way_unit_1.input.sel, dmux_8way_unit->input.sel, sizeof(dmux_4way_unit_1.input.sel));
+  dmux_4way_chip(&dmux_4way_unit_1);
 
-  // dmux 4way b
-  dmux_4_way_b.input.in = dmux.output.b;
-  memcpy(dmux_4_way_b.input.sel, dmux_8_way->input.sel, sizeof(dmux_4_way_b.input.sel));
-  dmux_4_way_chip(&dmux_4_way_b);
+  dmux_4way_unit_2.input.in = dmux_unit.output.b;
+  memcpy(dmux_4way_unit_2.input.sel, dmux_8way_unit->input.sel, sizeof(dmux_4way_unit_2.input.sel));
+  dmux_4way_chip(&dmux_4way_unit_2);
 
-  // output
-  dmux_8_way->output.a = dmux_4_way_a.output.a;
-  dmux_8_way->output.b = dmux_4_way_a.output.b;
-  dmux_8_way->output.c = dmux_4_way_a.output.c;
-  dmux_8_way->output.d = dmux_4_way_a.output.d;
-  dmux_8_way->output.e = dmux_4_way_b.output.a;
-  dmux_8_way->output.f = dmux_4_way_b.output.b;
-  dmux_8_way->output.g = dmux_4_way_b.output.c;
-  dmux_8_way->output.h = dmux_4_way_b.output.d;
+  dmux_8way_unit->output.a = dmux_4way_unit_1.output.a;
+  dmux_8way_unit->output.b = dmux_4way_unit_1.output.b;
+  dmux_8way_unit->output.c = dmux_4way_unit_1.output.c;
+  dmux_8way_unit->output.d = dmux_4way_unit_1.output.d;
+  dmux_8way_unit->output.e = dmux_4way_unit_2.output.a;
+  dmux_8way_unit->output.f = dmux_4way_unit_2.output.b;
+  dmux_8way_unit->output.g = dmux_4way_unit_2.output.c;
+  dmux_8way_unit->output.h = dmux_4way_unit_2.output.d;
 }
 ```
 
