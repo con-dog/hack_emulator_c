@@ -1,16 +1,21 @@
 #include <stdio.h>
 #include "types/types.h"
-#include "components/combinatorial/arithmetic/full-adder/full-adder.h"
+#include "components/combinatorial/arithmetic/add16/add16.h"
 
 int main(void)
 {
-  Full_Adder full_adder_unit;
+  Add16 add16_unit;
 
-  full_adder_unit.input.a = 1;
-  full_adder_unit.input.b = 1;
-  full_adder_unit.input.c = 1;
-  full_adder_chip(&full_adder_unit);
+  for (int i = 0; i < WORD_SIZE; i++)
+  {
+    add16_unit.input.a[i] = 1;
+    add16_unit.input.b[i] = 1;
+  }
+  add16_chip(&add16_unit);
 
-  printf("%d %d\n", full_adder_unit.output.sum, full_adder_unit.output.carry);
+  for (int i = WORD_SIZE - 1; i >= 0; i--)
+  {
+    printf("%d", add16_unit.output.out[i]);
+  }
   printf("\n");
 }
