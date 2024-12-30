@@ -28,8 +28,8 @@ INCLUDES = -I$(LOGIC_BIT_DIR)/nand \
           -I$(MUX_BIT_DIR)/mux \
           -I$(MUX_BIT_DIR)/dmux \
           -I$(MUX_MULTI_DIR)/mux16 \
-          -I$(MUX_MULTI_DIR)/mux16-4-way \
-          -I$(MUX_MULTI_DIR)/mux16-8-way \
+          -I$(MUX_MULTI_DIR)/mux16-4way \
+          -I$(MUX_MULTI_DIR)/mux16-8way \
           -I$(MUX_MULTI_DIR)/dmux-4way \
           -I$(MUX_MULTI_DIR)/dmux-8way \
           -I$(TYPES_DIR)
