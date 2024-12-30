@@ -6,8 +6,7 @@
 
 typedef struct Inc16_Input
 {
-  bool a[WORD_SIZE];
-  bool b[WORD_SIZE];
+  bool in[WORD_SIZE];
 } Inc16_Input;
 
 typedef struct Inc16_Output

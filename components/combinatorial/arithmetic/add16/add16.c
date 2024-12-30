@@ -10,8 +10,8 @@ void add16_chip(Add16 *add16_unit)
   Full_Adder full_adder_units[WORD_SIZE];
   for (int i = 0; i < WORD_SIZE; i++)
   {
-    full_adder_units[i].input.a = add16_unit->input.a[0];
-    full_adder_units[i].input.b = add16_unit->input.b[0];
+    full_adder_units[i].input.a = add16_unit->input.a[i];
+    full_adder_units[i].input.b = add16_unit->input.b[i];
     if (i == 0)
     {
       full_adder_units[i].input.c = 0;
