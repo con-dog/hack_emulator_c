@@ -3,6 +3,7 @@
     "stdlib.h": "c",
     "dmux.h": "c",
     "and.h": "c",
-    "or-8-way.h": "c"
+    "or-8-way.h": "c",
+    "nand.h": "c"
   }
 }
