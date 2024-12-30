@@ -3,6 +3,6 @@
 
 #include "xor-types.h"
 
-void xor_gate(Xor *xor_gate_instance);
+void xor_gate(Xor *xor_unit);
 
 #endif
