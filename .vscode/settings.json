@@ -6,6 +6,7 @@
     "or-8-way.h": "c",
     "nand.h": "c",
     "mux16-8way.h": "c",
-    "half-adder.h": "c"
+    "half-adder.h": "c",
+    "add16.h": "c"
   }
 }

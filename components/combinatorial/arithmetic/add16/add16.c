@@ -1,6 +1,10 @@
 #include "add16.h"
 #include "full-adder.h"
 
+/**
+ * 16-bit adder: Adds two 16-bit two's complement values.
+ * The most significant carry bit is ignored.
+ */
 void add16_chip(Add16 *add16_unit)
 {
   Full_Adder full_adder_units[WORD_SIZE];
