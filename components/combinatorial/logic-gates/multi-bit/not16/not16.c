@@ -2,13 +2,13 @@
 #include "not.h"
 #include "types.h"
 
-void not16_chip(Not16 *not16)
+void not16_gate(Not16 *not16_unit)
 {
-  Not not_gates[WORD_SIZE];
+  Not not_units[WORD_SIZE];
   for (int i = 0; i < WORD_SIZE; i++)
   {
-    not_gates[i].input.in = not16->input.in[i];
-    not_gate(&not_gates[i]);
-    not16->output.out[i] = not_gates[i].output.out;
+    not_units[i].input.in = not16_unit->input.in[i];
+    not_gate(&not_units[i]);
+    not16_unit->output.out[i] = not_units[i].output.out;
   }
 }
