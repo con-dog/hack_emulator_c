@@ -3,6 +3,6 @@
 
 #include "and16-types.h"
 
-void and16_chip(And16 *and16);
+void and16_gate(And16 *and16_unit);
 
 #endif
