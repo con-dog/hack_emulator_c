@@ -4,6 +4,7 @@
     "dmux.h": "c",
     "and.h": "c",
     "or-8-way.h": "c",
-    "nand.h": "c"
+    "nand.h": "c",
+    "mux16-8way.h": "c"
   }
 }
