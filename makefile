@@ -17,18 +17,18 @@ INCLUDES = -I$(GATES_DIR)/nand \
           -I$(GATES_DIR)/xor \
 					\
           -I$(COMB_DIR)/mux \
+					-I$(COMB_DIR)/mux16 \
+					-I$(COMB_DIR)/mux16-4-way \
+					-I$(COMB_DIR)/mux16-8-way \
           -I$(COMB_DIR)/dmux \
+					-I$(COMB_DIR)/dmux-4-way \
+					-I$(COMB_DIR)/dmux-8-way \
 					-I$(COMB_DIR)/not16 \
           -I$(COMB_DIR)/and16 \
 					-I$(COMB_DIR)/or16 \
-					-I$(COMB_DIR)/mux16 \
 					-I$(COMB_DIR)/or-8-way \
-					-I$(COMB_DIR)/mux16-4-way \
-					-I$(COMB_DIR)/mux16-8-way \
-					-I$(COMB_DIR)/dmux-4-way \
 					\
 					-I$(TYPES_DIR) \
-
 
 # Source files
 GATES_SRC = $(wildcard $(GATES_DIR)/*//*.c)
