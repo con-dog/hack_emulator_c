@@ -3,6 +3,6 @@
 
 #include "or-8way-types.h"
 
-void or_8way_gate(Or_8way *or_8way);
+void or_8way_gate(Or_8way *or_8way_unit);
 
 #endif

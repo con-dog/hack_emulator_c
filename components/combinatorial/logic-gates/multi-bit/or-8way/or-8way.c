@@ -2,13 +2,13 @@
 #include "or.h"
 #include "types.h"
 
-void or_8way_gate(Or_8way *or_8way)
+void or_8way_gate(Or_8way *or_8way_unit)
 {
   Or or_units_block_a[BYTE_SIZE / 2];
   for (int i = 0; i < BYTE_SIZE / 2; i++)
   {
-    or_units_block_a[i].input.a = or_8way->input.in[i];
-    or_units_block_a[i].input.b = or_8way->input.in[i + BYTE_SIZE / 2];
+    or_units_block_a[i].input.a = or_8way_unit->input.in[i];
+    or_units_block_a[i].input.b = or_8way_unit->input.in[i + BYTE_SIZE / 2];
     or_gate(&or_units_block_a[i]);
   }
 
@@ -26,5 +26,5 @@ void or_8way_gate(Or_8way *or_8way)
   };
   or_gate(&or_unit);
 
-  or_8way->output.out = or_unit.output.out;
+  or_8way_unit->output.out = or_unit.output.out;
 }
