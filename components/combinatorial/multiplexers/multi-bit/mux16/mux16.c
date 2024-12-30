@@ -2,15 +2,15 @@
 #include "mux.h"
 #include "types.h"
 
-void mux16_chip(Mux16 *mux16)
+void mux16_chip(Mux16 *mux16_unit)
 {
-  Mux mux_chips[WORD_SIZE];
+  Mux mux_units[WORD_SIZE];
   for (int i = 0; i < WORD_SIZE; i++)
   {
-    mux_chips[i].input.a = mux16->input.a[i];
-    mux_chips[i].input.b = mux16->input.b[i];
-    mux_chips[i].input.sel = mux16->input.sel;
-    mux_chip(&mux_chips[i]);
-    mux16->output.out[i] = mux_chips[i].output.out;
+    mux_units[i].input.a = mux16_unit->input.a[i];
+    mux_units[i].input.b = mux16_unit->input.b[i];
+    mux_units[i].input.sel = mux16_unit->input.sel;
+    mux_chip(&mux_units[i]);
+    mux16_unit->output.out[i] = mux_units[i].output.out;
   }
 }

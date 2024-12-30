@@ -3,6 +3,6 @@
 
 #include "mux16-types.h"
 
-void mux16_chip(Mux16 *mux16);
+void mux16_chip(Mux16 *mux16_unit);
 
 #endif
