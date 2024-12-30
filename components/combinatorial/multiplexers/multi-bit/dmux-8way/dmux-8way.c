@@ -25,11 +25,11 @@ void dmux_8way_chip(Dmux_8way *dmux_8way_unit)
 
   dmux_4way_unit_1.input.in = dmux_unit.output.a;
   memcpy(dmux_4way_unit_1.input.sel, dmux_8way_unit->input.sel, sizeof(dmux_4way_unit_1.input.sel));
-  dmux_4_way_chip(&dmux_4way_unit_1);
+  dmux_4way_chip(&dmux_4way_unit_1);
 
   dmux_4way_unit_2.input.in = dmux_unit.output.b;
   memcpy(dmux_4way_unit_2.input.sel, dmux_8way_unit->input.sel, sizeof(dmux_4way_unit_2.input.sel));
-  dmux_4_way_chip(&dmux_4way_unit_2);
+  dmux_4way_chip(&dmux_4way_unit_2);
 
   // output
   dmux_8way_unit->output.a = dmux_4way_unit_1.output.a;
