@@ -24,7 +24,7 @@ INCLUDES = -I$(LOGIC_BIT_DIR)/nand \
           -I$(LOGIC_MULTI_DIR)/not16 \
           -I$(LOGIC_MULTI_DIR)/and16 \
           -I$(LOGIC_MULTI_DIR)/or16 \
-          -I$(LOGIC_MULTI_DIR)/or-8-way \
+          -I$(LOGIC_MULTI_DIR)/or-8way \
           -I$(MUX_BIT_DIR)/mux \
           -I$(MUX_BIT_DIR)/dmux \
           -I$(MUX_MULTI_DIR)/mux16 \
