@@ -3,6 +3,6 @@
 
 #include "or16-types.h"
 
-void or16_chip(Or16 *or16);
+void or16_gate(Or16 *or16_unit);
 
 #endif
