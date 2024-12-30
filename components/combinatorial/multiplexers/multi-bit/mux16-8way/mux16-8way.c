@@ -26,7 +26,6 @@ void mux16_8way_chip(Mux16_8way *mux16_8way_unit)
   memcpy(mux16_4way_unit_1.input.d, mux16_8way_unit->input.d, sizeof(mux16_4way_unit_1.input.d));
   mux16_4way_chip(&mux16_4way_unit_1);
 
-  // Mux b
   memcpy(mux16_4way_unit_2.input.sel, mux16_8way_unit->input.sel, sizeof(mux16_4way_unit_2.input.sel));
   memcpy(mux16_4way_unit_2.input.a, mux16_8way_unit->input.e, sizeof(mux16_4way_unit_2.input.a));
   memcpy(mux16_4way_unit_2.input.b, mux16_8way_unit->input.f, sizeof(mux16_4way_unit_2.input.b));

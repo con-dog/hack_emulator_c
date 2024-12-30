@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include "types/types.h"
-#include "components/combinatorial/arithmetic/half-adder/half-adder.h"
+#include "components/combinatorial/arithmetic/full-adder/full-adder.h"
 
 int main(void)
 {
-  Half_Adder half_adder_unit;
+  Full_Adder full_adder_unit;
 
-  half_adder_unit.input.a = 0;
-  half_adder_unit.input.b = 0;
-  half_adder_chip(&half_adder_unit);
+  full_adder_unit.input.a = 1;
+  full_adder_unit.input.b = 1;
+  full_adder_unit.input.c = 1;
+  full_adder_chip(&full_adder_unit);
 
-  printf("%d %d\n", half_adder_unit.output.sum, half_adder_unit.output.carry);
+  printf("%d %d\n", full_adder_unit.output.sum, full_adder_unit.output.carry);
   printf("\n");
 }

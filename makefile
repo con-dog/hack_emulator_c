@@ -38,6 +38,7 @@ INCLUDES = \
           -I$(MUX_MULTI_DIR)/dmux-8way \
 					\
           -I$(ARITH_DIR)/half-adder \
+          -I$(ARITH_DIR)/full-adder \
 					\
           -I$(TYPES_DIR)
 

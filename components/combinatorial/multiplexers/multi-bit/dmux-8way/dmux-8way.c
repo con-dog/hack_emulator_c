@@ -31,7 +31,6 @@ void dmux_8way_chip(Dmux_8way *dmux_8way_unit)
   memcpy(dmux_4way_unit_2.input.sel, dmux_8way_unit->input.sel, sizeof(dmux_4way_unit_2.input.sel));
   dmux_4way_chip(&dmux_4way_unit_2);
 
-  // output
   dmux_8way_unit->output.a = dmux_4way_unit_1.output.a;
   dmux_8way_unit->output.b = dmux_4way_unit_1.output.b;
   dmux_8way_unit->output.c = dmux_4way_unit_1.output.c;
