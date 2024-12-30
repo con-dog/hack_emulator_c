@@ -3,6 +3,6 @@
 
 #include "and-types.h"
 
-void and_gate(And *and);
+void and_gate(And *and_unit);
 
 #endif

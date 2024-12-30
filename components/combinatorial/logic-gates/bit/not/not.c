@@ -1,12 +1,12 @@
 #include "nand.h"
 #include "not.h"
 
-void not_gate(Not * not )
+void not_gate(Not *not_unit)
 {
-  Nand nand = {
-      .input.a = not ->input.in,
-      .input.b = not ->input.in,
+  Nand nand_unit = {
+      .input.a = not_unit->input.in,
+      .input.b = not_unit->input.in,
   };
-  nand_gate(&nand);
-  not ->output.out = nand.output.out;
+  nand_gate(&nand_unit);
+  not_unit->output.out = nand_unit.output.out;
 }

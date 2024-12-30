@@ -8,7 +8,7 @@
  * | 1 | 0 |  1  |
  * | 1 | 1 |  0  |
  */
-void nand_gate(Nand *nand)
+void nand_gate(Nand *nand_unit)
 {
-  nand->output.out = !(nand->input.a & nand->input.b);
+  nand_unit->output.out = !(nand_unit->input.a & nand_unit->input.b);
 }

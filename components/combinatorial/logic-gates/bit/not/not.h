@@ -3,6 +3,6 @@
 
 #include "not-types.h"
 
-void not_gate(Not * not );
+void not_gate(Not *not_unit);
 
 #endif

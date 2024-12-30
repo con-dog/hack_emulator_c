@@ -3,6 +3,6 @@
 
 #include "or-types.h"
 
-void or_gate(Or * or);
+void or_gate(Or *or_unit);
 
 #endif
