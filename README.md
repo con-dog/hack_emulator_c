@@ -26,7 +26,7 @@ For comparison, most emulator projects start right at the CPU level and don't se
 ## Contributing [OPEN]
 A really simple way to start contributing would be to write some truth table tests for the nand_gate, then the other base gates too.
 
-Anyone code do this, its pretty easy stuff :)
+Anyone can do this, its pretty easy stuff :)
 
 EG: For the NAND gate, it would be as simple as the following (pseudocode):
 ```c
