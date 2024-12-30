@@ -2,25 +2,24 @@
 #include "and.h"
 #include "not.h"
 
-void dmux_chip(Dmux *dmux)
+void dmux_chip(Dmux *dmux_unit)
 {
-  Not not = {
-      .input.in = dmux->input.sel,
+  Not not_unit = {
+      .input.in = dmux_unit->input.sel,
   };
-  not_gate(&not );
+  not_gate(&not_unit);
 
-  And and_a = {
-      .input.a = dmux->input.in,
-      .input.b = not .output.out,
+  And and_unit_1 = {
+      .input.a = dmux_unit->input.in,
+      .input.b = not_unit.output.out,
   };
-  And and_b = {
-      .input.a = dmux->input.sel,
-      .input.b = dmux->input.in,
+  And and_unit_2 = {
+      .input.a = dmux_unit->input.sel,
+      .input.b = dmux_unit->input.in,
   };
 
-  and_gate(&and_a);
-  and_gate(&and_b);
-
-  dmux->output.a = and_a.output.out;
-  dmux->output.b = and_b.output.out;
+  and_gate(&and_unit_1);
+  and_gate(&and_unit_2);
+  dmux_unit->output.a = and_unit_1.output.out;
+  dmux_unit->output.b = and_unit_2.output.out;
 }

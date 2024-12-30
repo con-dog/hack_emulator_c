@@ -3,6 +3,6 @@
 
 #include "dmux-types.h"
 
-void dmux_chip(Dmux *dmux);
+void dmux_chip(Dmux *dmux_unit);
 
 #endif
