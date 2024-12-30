@@ -16,22 +16,29 @@ MUX_MULTI_DIR = $(COMB_DIR)/multiplexers/multi-bit
 ARITH_DIR = $(COMB_DIR)/arithmetic
 
 # Include paths
-INCLUDES = -I$(LOGIC_BIT_DIR)/nand \
+INCLUDES = \
+					-I$(LOGIC_BIT_DIR)/nand \
           -I$(LOGIC_BIT_DIR)/not \
           -I$(LOGIC_BIT_DIR)/and \
           -I$(LOGIC_BIT_DIR)/or \
           -I$(LOGIC_BIT_DIR)/xor \
+					\
           -I$(LOGIC_MULTI_DIR)/not16 \
           -I$(LOGIC_MULTI_DIR)/and16 \
           -I$(LOGIC_MULTI_DIR)/or16 \
           -I$(LOGIC_MULTI_DIR)/or-8way \
+					\
           -I$(MUX_BIT_DIR)/mux \
           -I$(MUX_BIT_DIR)/dmux \
+					\
           -I$(MUX_MULTI_DIR)/mux16 \
           -I$(MUX_MULTI_DIR)/mux16-4way \
           -I$(MUX_MULTI_DIR)/mux16-8way \
           -I$(MUX_MULTI_DIR)/dmux-4way \
           -I$(MUX_MULTI_DIR)/dmux-8way \
+					\
+          -I$(ARITH_DIR)/half-adder \
+					\
           -I$(TYPES_DIR)
 
 # Source files
