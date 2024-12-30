@@ -41,6 +41,7 @@ INCLUDES = \
           -I$(ARITH_DIR)/full-adder \
           -I$(ARITH_DIR)/add16 \
           -I$(ARITH_DIR)/inc16 \
+          -I$(ARITH_DIR)/alu \
 					\
           -I$(TYPES_DIR)
 
