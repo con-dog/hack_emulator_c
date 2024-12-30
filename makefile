@@ -3,41 +3,48 @@ CC = gcc
 CFLAGS = -Wall -Wextra
 
 # Directory structure
-GATES_DIR = gates
-CHIPS_DIR = chips
-	COMB_DIR = $(CHIPS_DIR)/combinatorial
-	SEQ_DIR = $(CHIPS_DIR)/sequential
+COMPONENTS_DIR = components
+COMB_DIR = $(COMPONENTS_DIR)/combinatorial
+SEQ_DIR = $(COMPONENTS_DIR)/sequential
 TYPES_DIR = types
 
-# Include paths for header files
-INCLUDES = -I$(GATES_DIR)/nand \
-          -I$(GATES_DIR)/not \
-          -I$(GATES_DIR)/and \
-          -I$(GATES_DIR)/or \
-          -I$(GATES_DIR)/xor \
-					\
-          -I$(COMB_DIR)/mux \
-					-I$(COMB_DIR)/mux16 \
-					-I$(COMB_DIR)/mux16-4-way \
-					-I$(COMB_DIR)/mux16-8-way \
-          -I$(COMB_DIR)/dmux \
-					-I$(COMB_DIR)/dmux-4-way \
-					-I$(COMB_DIR)/dmux-8-way \
-					-I$(COMB_DIR)/not16 \
-          -I$(COMB_DIR)/and16 \
-					-I$(COMB_DIR)/or16 \
-					-I$(COMB_DIR)/or-8-way \
-					\
-					-I$(TYPES_DIR) \
+# Logic gates directories
+LOGIC_BIT_DIR = $(COMB_DIR)/logic-gates/bit
+LOGIC_MULTI_DIR = $(COMB_DIR)/logic-gates/multi-bit
+MUX_BIT_DIR = $(COMB_DIR)/multiplexers/bit
+MUX_MULTI_DIR = $(COMB_DIR)/multiplexers/multi-bit
+ARITH_DIR = $(COMB_DIR)/arithmetic
+
+# Include paths
+INCLUDES = -I$(LOGIC_BIT_DIR)/nand \
+          -I$(LOGIC_BIT_DIR)/not \
+          -I$(LOGIC_BIT_DIR)/and \
+          -I$(LOGIC_BIT_DIR)/or \
+          -I$(LOGIC_BIT_DIR)/xor \
+          -I$(LOGIC_MULTI_DIR)/not16 \
+          -I$(LOGIC_MULTI_DIR)/and16 \
+          -I$(LOGIC_MULTI_DIR)/or16 \
+          -I$(LOGIC_MULTI_DIR)/or-8-way \
+          -I$(MUX_BIT_DIR)/mux \
+          -I$(MUX_BIT_DIR)/dmux \
+          -I$(MUX_MULTI_DIR)/mux16 \
+          -I$(MUX_MULTI_DIR)/mux16-4-way \
+          -I$(MUX_MULTI_DIR)/mux16-8-way \
+          -I$(MUX_MULTI_DIR)/dmux-4-way \
+          -I$(MUX_MULTI_DIR)/dmux-8-way \
+          -I$(TYPES_DIR)
 
 # Source files
-GATES_SRC = $(wildcard $(GATES_DIR)/*//*.c)
-COMB_SRC = $(wildcard $(COMB_DIR)/*//*.c)
-SEQ_SRC = $(wildcard $(SEQ_DIR)/*//*.c)
+LOGIC_BIT_SRC = $(wildcard $(LOGIC_BIT_DIR)/*/*.c)
+LOGIC_MULTI_SRC = $(wildcard $(LOGIC_MULTI_DIR)/*/*.c)
+MUX_BIT_SRC = $(wildcard $(MUX_BIT_DIR)/*/*.c)
+MUX_MULTI_SRC = $(wildcard $(MUX_MULTI_DIR)/*/*.c)
+ARITH_SRC = $(wildcard $(ARITH_DIR)/*/*.c)
+SEQ_SRC = $(wildcard $(SEQ_DIR)/*/*.c)
 MAIN_SRC = main.c
 
 # All source files
-SRC = $(MAIN_SRC) $(GATES_SRC) $(COMB_SRC) $(SEQ_SRC)
+SRC = $(MAIN_SRC) $(LOGIC_BIT_SRC) $(LOGIC_MULTI_SRC) $(MUX_BIT_SRC) $(MUX_MULTI_SRC) $(ARITH_SRC) $(SEQ_SRC)
 
 # Object files
 OBJ = $(SRC:.c=.o)
@@ -45,23 +52,18 @@ OBJ = $(SRC:.c=.o)
 # Main target
 TARGET = main
 
-# Default target
+# Targets
 all: $(TARGET)
 
-# Linking
 $(TARGET): $(OBJ)
 	$(CC) $(OBJ) -o $@
 
-# Compilation
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-# Clean
 clean:
 	rm -f $(TARGET) $(OBJ)
 
-# Clean and rebuild
 rebuild: clean all
 
-# Phony targets
 .PHONY: all clean rebuild
