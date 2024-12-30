@@ -11,7 +11,10 @@ All this is done via software defined hardware emulation.
 ## Difference to other Emulator projects
 - No external dependencies (so far)
 - Start with a single software defined NAND gate in C
-  - EVERYTHING is built from this base chip - everything
+  - The first chips are built from this NAND gate
+  - Then these chips are used and combined to build even more chips
+  - Technically you could build EVERYTHING from just NAND gates, but that would take too long to code up
+    - When I complete this project, I may write a script that converts all my non NAND gate components to pure NAND gates  
 - Don't use certain programming utilities: boolean logic operators, bitwise logic operators etc 
   - Instead we leverage the gates/chips to implement such logic
 - Build more and more base chips from the NAND gate
