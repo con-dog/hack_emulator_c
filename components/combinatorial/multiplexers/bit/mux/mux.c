@@ -3,29 +3,29 @@
 #include "not.h"
 #include "or.h"
 
-void mux_chip(Mux *mux)
+void mux_chip(Mux *mux_unit)
 {
-  Not not = {
-      .input.in = mux->input.sel};
-  not_gate(&not );
+  Not not_unit = {
+      .input.in = mux_unit->input.sel};
+  not_gate(&not_unit);
 
-  And and_a = {
-      .input.a = mux->input.a,
-      .input.b = not .output.out,
+  And and_unit_1 = {
+      .input.a = mux_unit->input.a,
+      .input.b = not_unit.output.out,
   };
-  and_gate(&and_a);
+  and_gate(&and_unit_1);
 
-  And and_b = {
-      .input.a = mux->input.sel,
-      .input.b = mux->input.b,
+  And and_unit_2 = {
+      .input.a = mux_unit->input.sel,
+      .input.b = mux_unit->input.b,
   };
-  and_gate(&and_b);
+  and_gate(&and_unit_2);
 
-  Or or = {
-            .input.a = and_a.output.out,
-            .input.b = and_b.output.out,
-        };
-  or_gate(& or);
+  Or or_unit = {
+      .input.a = and_unit_1.output.out,
+      .input.b = and_unit_2.output.out,
+  };
+  or_gate(&or_unit);
 
-  mux->output.out = or.output.out;
+  mux_unit->output.out = or_unit.output.out;
 }
