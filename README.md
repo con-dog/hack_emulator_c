@@ -27,40 +27,36 @@ For comparison, most emulator projects start right at the CPU level and don't se
 - More straight forward, but you skip all the gates/chips fun.
 
 ## Contributing [OPEN]
-A really simple way to start contributing would be to write some truth table tests for the nand_gate, then the other base gates too.
+A really simple way to start contributing would be to write some truth table tests for the logic gates, then move up to more complex components.
 
-Anyone can do this, its pretty easy stuff :)
+*Please see `docs/testing.md` to get started.*
 
-EG: For the NAND gate, it would be as simple as the following (pseudocode):
+Heres an example test for a nand gate
+
 ```c
-// Truth Table for NAND Gate:
-/* 
- * | a | b | out |
- * ---------------
- * | 0 | 0 |  1  |
- * | 0 | 1 |  1  |
- * | 1 | 0 |  1  |
- * | 1 | 1 |  0  |
- */
+#include <stdio.h>
 
-// Define gate
-Nand nand_instance;
+#include "test-nand.h"
+#include "nand.h"
+#include "test-utils.h"
 
-// Set inputs to either 0 or 1
-nand_instance.input.a = 0;
-nand_instance.input.b = 0;
-
-// Process logic
-nand_gate(&nand_instance);
-
-// Check output is correct
-if (nand_instance.output.out == 1)
+void test_nand(Test_Counter *counter)
 {
-  // PASSED
-}
-else
-{
-  // FAILED
+  // Truth table for NAND: expected outputs
+  const int expected[4] = {1, 1, 1, 0}; // outputs for (0,0), (0,1), (1,0), (1,1)
+  for (int i = 0; i < 4; i++)
+  {
+    Nand nand = {
+        .input.a = (i >> 1) & 1, // Gets first bit  (0011)
+        .input.b = i & 1,        // Gets second bit (0101)
+    };
+    nand_gate(&nand);
+    test_assert(nand.output.out == expected[i], counter,
+                "NAND(%d,%d) should be %d",
+                nand.input.a,
+                nand.input.b,
+                expected[i]);
+  }
 }
 ```
 
