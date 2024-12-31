@@ -11,4 +11,5 @@ int main(void)
   };
 
   test_nand(&counter);
+  printf("\nTests run: \t%d\nTests failing: \t%d\n", counter.tests_run, counter.tests_failed);
 }

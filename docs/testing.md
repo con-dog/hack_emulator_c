@@ -5,9 +5,9 @@
 From root of project, run the following commands to compile and run all tests:
 ```bash
 # Compile all tests
-make tests
+make test
 # Run all tests
-./tests
+./test
 ```
 
 ### Adding Logic Tests
