@@ -11,24 +11,41 @@ make test
 ```
 
 ### Adding Logic Tests
-Inside each component directory, simply add a new file called <component_name>_test.c and write your tests in there.
+Inside each component directory, simply add a new file called `test-<component_name>.h` and `test-<component_name>.c` and write your tests in there.
+
+Heres an example of a test for the NAND gate:
 ```c
+// Truth Table
+/*
+ * | a | b | out |
+ * ---------------
+ * | 0 | 0 |  1  |
+ * | 0 | 1 |  1  |
+ * | 1 | 0 |  1  |
+ * | 1 | 1 |  0  |
+ */
+#include <stdio.h>
+
+#include "test-nand.h"
 #include "nand.h"
-#include <assert.h>
+#include "test-utils.h"
 
-int main()
+void test_nand(Test_Counter *counter)
 {
-  // Define gate
-  Nand nand_instance;
-
-  // Set inputs to either 0 or 1
-  nand_instance.input.a = 0;
-  nand_instance.input.b = 0;
-
-  // Process logic
-  nand_gate(&nand_instance);
-
-  // Check output is correct
-  assert(nand_instance.output.out == 1);
+  // Truth table for NAND: expected outputs
+  const int expected[4] = {1, 1, 1, 0}; // outputs for (0,0), (0,1), (1,0), (1,1)
+  for (int i = 0; i < 4; i++)
+  {
+    Nand nand = {
+        .input.a = (i >> 1) & 1, // Gets first bit  (0011)
+        .input.b = i & 1,        // Gets second bit (0101)
+    };
+    nand_gate(&nand);
+    test_assert(nand.output.out == expected[i], counter,
+                "NAND(%d,%d) should be %d",
+                nand.input.a,
+                nand.input.b,
+                expected[i]);
+  }
 }
 ```
