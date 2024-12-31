@@ -58,7 +58,7 @@ ARITH_SRC = $(wildcard $(ARITH_DIR)/*/*.c)
 SEQ_SRC = $(wildcard $(SEQ_DIR)/*/*.c)
 UTILS_SRC = $(wildcard $(UTILS_DIR)/*.c)
 MAIN_SRC = main.c
-TEST_SRC = tests.c
+TEST_SRC = test.c
 
 # All source files
 SRC = $(MAIN_SRC) $(UTILS_SRC) $(LOGIC_BIT_SRC) $(LOGIC_MULTI_SRC) $(MUX_BIT_SRC) $(MUX_MULTI_SRC) $(ARITH_SRC) $(SEQ_SRC)
